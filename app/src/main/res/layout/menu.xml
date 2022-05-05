@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg">
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="418dp"
+        android:layout_height="427dp"
+        android:background="@drawable/detail_page_bg"
+        android:fontFamily="@font/rubik"
+        android:lineSpacingExtra="2dp"
+        android:text="&quot;  Welcome to online ecommerce for e-smart shopping &quot; &quot; This app aims to allow customers to buy electronic goods for mobile devices and mobile supply chain&quot; &quot; the mobile application summary is a modern technology that represents modern approach in GUI design, and material design&quot;. Where we're committed to deliver you the best and most affordable technologies on demand."
+        android:textColor="@android:color/background_dark"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView12"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintVertical_bias="1.0"
+        android:inputType="textMultiLine"
+        />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="391dp"
+        android:layout_height="72dp"
+        android:autoText="false"
+        android:background="@drawable/cart_button_bg"
+        android:backgroundTint="#B3D8E5"
+        android:elegantTextHeight="false"
+        android:ems="10"
+        android:freezesText="false"
+        android:inputType="textMultiLine"
+        android:text="Welcome to online ecommerce for e-smart shopping."
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.147"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
