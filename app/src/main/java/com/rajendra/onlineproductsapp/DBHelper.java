@@ -43,6 +43,8 @@ public class DBHelper extends SQLiteOpenHelper{
     private static final String COLUMN_F2 = "last_name";
     private static final String COLUMN_EMAIL = "email";
     private static final String COLUMN_PASS = "pass";
+    //for admin uses
+    private static final String COLUMN_ADMIN = "admin";
 
     //other solution 1 )
     DBHelper(Context context)
@@ -68,13 +70,13 @@ public class DBHelper extends SQLiteOpenHelper{
                 + COLUMN_RANGE + " TEXT, " + COLUMN_QTY + " INTEGER);";
         DB.execSQL(query);
 
-        //for users
+        //for users and admins
         String usrquery =
                 "CREATE TABLE " +  TABLE_NAME2 +
                         " (" + COLUMN_ID2 + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                         + COLUMN_F1 + " TEXT, " +
                         COLUMN_F2 + " TEXT, "
-                        + COLUMN_EMAIL + " TEXT, " + COLUMN_PASS + " TEXT);";
+                        + COLUMN_EMAIL + " TEXT, " + COLUMN_PASS + " TEXT, " + COLUMN_ADMIN + " TEXT);";
         DB.execSQL(usrquery);
     }
 
@@ -115,7 +117,7 @@ public class DBHelper extends SQLiteOpenHelper{
     }
 
     //for users
-    Boolean addUsrs(String first_name, String email, String pass, int user_id){
+    Boolean addUsrs(String first_name, String email, String pass, String user_id){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -130,6 +132,45 @@ public class DBHelper extends SQLiteOpenHelper{
             Toast.makeText(context, "Failed to insert user", Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(context, "User successfully updated", Toast.LENGTH_SHORT).show();
+        }
+        return null;
+    }
+
+    //for admin users
+    Boolean addAdmin(String admin, String email, String pass, String user_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put (COLUMN_ADMIN, admin );
+        cv.put (COLUMN_EMAIL, email );
+        cv.put (COLUMN_PASS, pass );
+        cv.put (COLUMN_ID2,user_id);
+
+        long result = db.insert(TABLE_NAME2, null, cv);
+        if (result == -1 )
+        {
+            Toast.makeText(context, "Failed to insert admin", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, "Admin successfully updated", Toast.LENGTH_SHORT).show();
+        }
+        return null;
+    }
+
+    //for user registers
+    Boolean registerUsrs(String first_name,String email, String pass){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put (COLUMN_F1, first_name );
+        cv.put (COLUMN_EMAIL, email );
+        cv.put (COLUMN_PASS, pass );
+
+        long result = db.insert(TABLE_NAME2, null, cv);
+        if (result == -1 )
+        {
+            Toast.makeText(context, "Failed to create user account.", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, "Account successfully created !", Toast.LENGTH_SHORT).show();
         }
         return null;
     }
@@ -223,7 +264,7 @@ public class DBHelper extends SQLiteOpenHelper{
     }
 
 //update and delete section DB (sol3 part)
-    public boolean updateData(String row_id, String type, String specifier, String ranges, int qty){
+    public void updateData(String type, String specifier, String ranges, int qty){
     SQLiteDatabase db = this.getWritableDatabase();
     ContentValues cv = new ContentValues();
     cv.put(COLUMN_TYPE, type);
@@ -232,18 +273,17 @@ public class DBHelper extends SQLiteOpenHelper{
     cv.put(COLUMN_QTY, qty);
 
 
-    long result = db.update(TABLE_NAME1, cv, "_id=?", new String[]{row_id});
+    long result = db.update(TABLE_NAME1, cv, "product_specifier=?", new String[]{specifier});
     if(result == -1){
-        Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "Failed, make sure the specifier is the same", Toast.LENGTH_SHORT).show();
     }else {
         Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
     }
-
-        return true;
     }
 
-    //update and delete for user (sol3 part)
-    public boolean updateUsrData(String row_id, String first_name, String email, String pass,  int user_id){
+
+    //update for user
+    public boolean updateUsrData(String first_name, String email, String pass, String user_id){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_F1, first_name);
@@ -251,30 +291,39 @@ public class DBHelper extends SQLiteOpenHelper{
         cv.put(COLUMN_PASS, pass);
         cv.put(COLUMN_ID2, user_id);
 
-        //shows the info of the table for products
-        long result = db.update(TABLE_NAME1, cv, "_id=?", new String[]{row_id});
+        //shows the info of the table for users
+        long result = db.update(TABLE_NAME2, cv, "user_id=?", new String[]{String.valueOf(user_id)});
         if(result == -1){
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
         }
+        return true;
+    }
+
+    //update for admins
+    public boolean updateAdmin(String admin, String email, String pass, String user_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_ADMIN, admin);
+        cv.put(COLUMN_EMAIL, email);
+        cv.put(COLUMN_PASS, pass);
+        cv.put(COLUMN_ID2, user_id);
 
         //shows the info of the table for users
-        long usrresult = db.update(TABLE_NAME2, cv, "_id=?", new String[]{row_id});
+        long result = db.update(TABLE_NAME2, cv, "user_id=?", new String[]{String.valueOf(user_id)});
         if(result == -1){
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
         }
-
-
         return true;
     }
 
     //deletes one row off table product
-    void deleteOneRow(String row_id){
+    void deleteOneRow(String specifier){
         SQLiteDatabase db = this.getWritableDatabase();
-        long result = db.delete(TABLE_NAME1, "_id=?", new String[]{row_id});
+        long result = db.delete(TABLE_NAME1, "product_specifier=?", new String[]{specifier});
         if(result == -1){
             Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
         }else{
@@ -282,16 +331,17 @@ public class DBHelper extends SQLiteOpenHelper{
         }
     }
 
-    //deletes one row off table users
-    void deleteUsrRow(String row_id){
+    //deletes one row off table users or admins using indentifier
+    void deleteUsrRow(String user_id){
         SQLiteDatabase db = this.getWritableDatabase();
-        long result = db.delete(TABLE_NAME2, "_id=?", new String[]{row_id});
+        long result = db.delete(TABLE_NAME2, "user_id=?", new String[]{user_id});
         if(result == -1){
             Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     //deletes all rows off products
     void deleteAllData(){
@@ -299,10 +349,75 @@ public class DBHelper extends SQLiteOpenHelper{
         db.execSQL("DELETE FROM " + TABLE_NAME1);
     }
 
-//deletes for users
-    void deleteUsrData(){
+    //deletes for  all users
+    void deleteUsrData(Integer user_id){
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_NAME2);
     }
+
+    //user login
+    public Boolean checkuserdata(String username, String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM users WHERE first_name = ? AND email = ?", new String[] {username, email});
+        if (cursor.getCount()>0)
+            return  true;
+        else
+            return false;
+    }
+
+    public Boolean checkuserNmPass(String username, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM users WHERE first_name = ?  and pass = ?", new String[] {username,password});
+        if (cursor.getCount()>0)
+            return  true;
+        else
+            return false;
+    }
+
+    public Boolean checkuserMailPass(String email, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM users WHERE email = ?  and pass = ?", new String[] { email,password});
+        if (cursor.getCount()>0)
+            return  true;
+        else
+            return false;
+    }
+
+    public Boolean checkadmin(String admin, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM users WHERE admin = ? AND pass = ?", new String[] {admin, password});
+        if (cursor.getCount()>0)
+            return  true;
+        else
+            return false;
+    }
+
+    public Boolean checkadminmail(String email, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM users WHERE email = ? AND pass = ?", new String[] {email, password});
+        if (cursor.getCount()>0)
+            return  true;
+        else
+            return false;
+    }
+
+    //user forgotten password
+    /*
+    public Boolean updatePass(String first_name, String email, String pass){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_PASS, pass);
+
+        //shows the info of the table for users
+        Cursor cursor = db.rawQuery("SELECT * FROM users WHERE pass=? AND email=email AND first_name=first_name", new String[]{first_name, email, pass});
+        if(cursor.getCount()>0){
+            Toast.makeText(context, "Updated password Successfully !", Toast.LENGTH_SHORT).show();
+            return true;
+        }else {
+            Toast.makeText(context, "Failed to update password.", Toast.LENGTH_SHORT).show();
+            return  false;
+        }
+    }*/
+
 
 }

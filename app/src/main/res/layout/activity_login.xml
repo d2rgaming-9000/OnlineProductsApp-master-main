@@ -16,6 +16,7 @@
         android:backgroundTint="#C1EAF5"
         android:text="Log In"
         android:textAlignment="center"
+        android:textColor="#323554"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,8 +32,10 @@
         android:layout_marginTop="72dp"
         android:drawableLeft="@drawable/ic_person"
         android:ems="10"
+        android:hint="Username or Email"
         android:inputType="textPersonName"
         android:textColor="#B3D8E5"
+        android:textColorHint="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,18 +49,19 @@
         android:layout_marginTop="24dp"
         android:drawableLeft="@drawable/ic_security"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:hint="Password"
+        android:inputType="textPassword"
         android:textColor="#B3D8E5"
+        android:textColorHint="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputUsername"
-        tools:text="Password" />
-
+/>
     <Button
         android:id="@+id/LoginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="56dp"
         android:backgroundTint="#009688"
         android:text="Login"
         android:textColor="#FEFEFE"
@@ -66,12 +70,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
 
+    //forgotten password currently disabled//
     <TextView
         android:id="@+id/ForgetPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forget Password"
-        android:textColor="#B3D8E5"
+        android:background="@drawable/cart_button_bg"
+        android:backgroundTint="@color/cardview_shadow_start_color"
+        android:text=""
+        android:textColor="#D6F4FF"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
@@ -80,23 +88,29 @@
         android:id="@+id/AdminButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="#009688"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/cardview_shadow_start_color"
         android:text="Admin"
-        android:textColor="#FEFEFE"
+        android:textColor="#D1F3FF"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoginButton" />
+        app:layout_constraintTop_toBottomOf="@+id/CreateAccount" />
 
     <TextView
         android:id="@+id/CreateAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/cart_button_bg"
+        android:backgroundTint="?android:attr/textColorSecondary"
         android:text="Create Account"
-        android:textColor="#B3D8E5"
+        android:textAllCaps="false"
+        android:textColor="#D1F3FF"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AdminButton" />
+        app:layout_constraintTop_toBottomOf="@+id/LoginButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

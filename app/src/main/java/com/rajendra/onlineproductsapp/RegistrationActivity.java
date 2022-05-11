@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -46,20 +47,26 @@ import android.view.View;
 import android.widget.Button;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class RegistrationActivity extends AppCompatActivity {
     private Button register;
-    EditText usrname, email, pass;
+    EditText usrname_input, lastname_input, email_input, pass_input, cpass_input;
     DBHelper DB;
+
+    String user_id, usrname, lastname, email, pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        usrname = findViewById(R.id.InputUsername);
-        email = findViewById(R.id.InputEmail);
-        pass = findViewById(R.id.InputPassword);
+        usrname_input = findViewById(R.id.InputUsername);
+        email_input = findViewById(R.id.InputEmail);
+        pass_input = findViewById(R.id.InputPassword);
+        cpass_input = findViewById(R.id.InputComformPassword);
+
+        final int sum = 1;
 
         DB = new DBHelper(this);
         register = (Button) findViewById(R.id.SignUpButton);
@@ -74,21 +81,17 @@ public class RegistrationActivity extends AppCompatActivity {
 
         //when click register
 
+        //clicks on insert
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String usrnameTXT = usrname.getText().toString();
-                String lastnameTXT = usrname.getText().toString();
-                String emailTXT = email.getText().toString();
-                Integer passTXT = Integer.valueOf(pass.getText().toString());
+                DBHelper myDB = new DBHelper(RegistrationActivity.this);
+                usrname = usrname_input.getText().toString().trim();
+                email = email_input.getText().toString().trim();
+                pass = pass_input.getText().toString().trim();
+                pass = cpass_input.getText().toString().trim();
 
-                Boolean checkinsertdata = DB.addUsrs (usrnameTXT, lastnameTXT, emailTXT, passTXT);
-                if (checkinsertdata == true) {
-                    Toast.makeText(RegistrationActivity.this, "Account Registered", Toast.LENGTH_SHORT).show();
-
-                } else {
-                    Toast.makeText(RegistrationActivity.this, "Entry Not Registered", Toast.LENGTH_SHORT).show();
-                }
+                myDB.registerUsrs(usrname, email, pass);
             }
         });
 

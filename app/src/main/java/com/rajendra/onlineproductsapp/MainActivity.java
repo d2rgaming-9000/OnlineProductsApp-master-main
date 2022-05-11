@@ -57,11 +57,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
     //Button to redirect user to pages with button declaration
-        //clicks on Menu
+        //clicks on logout
         Button button1 = (Button)findViewById(R.id.MainBtn);
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, MainMenu.class);
+                Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                finish();
                 startActivity(i);
             }
         });

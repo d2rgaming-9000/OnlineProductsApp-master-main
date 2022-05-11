@@ -20,7 +20,11 @@ public class ItemsActivity extends AppCompatActivity {
     EditText row_id, type_input, specifier_input, range_input, qty_input;
     Button btnInsert, btnView, btnUpdate, btnDelete;
 
-    String id, type, specifier, ranges, qty;
+    String id;
+    String type;
+    String specifier;
+    String ranges;
+    Integer qty;
 
 
     @Override
@@ -36,6 +40,7 @@ public class ItemsActivity extends AppCompatActivity {
 
         btnInsert = findViewById(R.id.btnInsert);
         btnUpdate = findViewById(R.id.btnUpdate);
+        btnDelete = findViewById(R.id.btnDelete);
 
         //clicks on insert
         btnInsert.setOnClickListener(new View.OnClickListener() {
@@ -52,8 +57,8 @@ public class ItemsActivity extends AppCompatActivity {
 
         //clicks on View
         //to view all data of items
-        Button button1 = (Button) findViewById(R.id.btnView);
-        button1.setOnClickListener(new View.OnClickListener() {
+        Button btnView = (Button) findViewById(R.id.btnView);
+        btnView.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(ItemsActivity.this, ItemView.class);
                 startActivity(i);
@@ -65,13 +70,32 @@ public class ItemsActivity extends AppCompatActivity {
                    @Override
                 public void onClick(View view) {
                     DBHelper myDB = new DBHelper(ItemsActivity.this);
-                    boolean isUpdate = myDB.updateData(row_id.toString(),
+                   //other solution
+                  type = type_input.getText().toString().trim();
+                  specifier = specifier_input.getText().toString().trim();
+                  ranges = range_input.getText().toString().trim();
+                  qty = Integer.valueOf(qty_input.getText().toString());
+       		  myDB.updateData(type, specifier, ranges, qty);
+
+       		  //This secondary solution checks for updated data, only uncomment this if it is a required option
+              // and comment the above solution (sol 4 above)
+       		  /* boolean isUpdate = myDB.updateData(
                             type_input.getText().toString(),
                             specifier_input.getText().toString(),
                             range_input.getText().toString(),
                             Integer.valueOf(qty_input.getText().toString())
-                   );
+                   ); */
                 }
+        });
+
+            //sol Delete items
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DBHelper myDB = new DBHelper(ItemsActivity.this);
+                specifier = specifier_input.getText().toString().trim();
+                myDB.deleteOneRow(specifier);
+            }
         });
     }
 }

@@ -17,10 +17,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class UsrData extends AppCompatActivity {
 
-    EditText row_id, firstname_input, f2_input, email_input,pass_input, usrID_input;
-    Button btnInsert, btnView, btnUpdate, btnDelete;
+    EditText firstname_input, email_input,pass_input, usrID_input;
+    Button btnInsert, btnUpdate, btnDelete;
 
-    String id, type, specifier, ranges, qty;
+    String user_id;
 
 
     @Override
@@ -36,6 +36,7 @@ public class UsrData extends AppCompatActivity {
 
         btnInsert = findViewById(R.id.btnInsert);
         btnUpdate = findViewById(R.id.btnUpdate);
+        btnDelete = findViewById(R.id.btnDelete);
 
         //clicks on insert
         btnInsert.setOnClickListener(new View.OnClickListener() {
@@ -45,13 +46,13 @@ public class UsrData extends AppCompatActivity {
                 myDB.addUsrs(firstname_input.getText().toString().trim(),
                         email_input.getText().toString().trim(),
                         pass_input.getText().toString().trim(),
-                        Integer.valueOf(usrID_input.getText().toString().trim())
+                        usrID_input.getText().toString().trim()
                 );
             }
         });
 
         //clicks on View
-        //to view all data of items
+        //to view all data of USERS
 
         Button button1 = (Button) findViewById(R.id.btnView);
         button1.setOnClickListener(new View.OnClickListener() {
@@ -61,19 +62,28 @@ public class UsrData extends AppCompatActivity {
             }
         });
         
-        //(sol 4) Updating data
+        //(sol 4) Updating USERS
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DBHelper myDB = new DBHelper(UsrData.this);
-                boolean isUpdate = myDB.updateUsrData(row_id.toString(),
+                boolean isUpdate = myDB.updateUsrData(
                         firstname_input.getText().toString(),
                         email_input.getText().toString(),
                         pass_input.getText().toString(),
-                        Integer.valueOf(usrID_input.getText().toString())
+                        usrID_input.getText().toString());
+            }
+        });
 
-                );
+        //sol Delete USERS
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DBHelper myDB = new DBHelper(UsrData.this);
+                user_id = usrID_input.getText().toString().trim();
+                myDB.deleteUsrRow(user_id);
             }
         });
     }
+
 }

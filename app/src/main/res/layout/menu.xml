@@ -36,13 +36,13 @@
         android:freezesText="false"
         android:inputType="textMultiLine"
         android:text="Welcome to online ecommerce for e-smart shopping."
+        android:textColor="#323554"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.147"
-        />
+        app:layout_constraintVertical_bias="0.112" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
