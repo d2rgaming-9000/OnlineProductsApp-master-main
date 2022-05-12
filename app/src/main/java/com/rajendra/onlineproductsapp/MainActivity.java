@@ -76,6 +76,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //clicks on view cart
+        Button button3 = (Button)findViewById(R.id.CartBtn);
+        button3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, checkout.class);
+                startActivity(i);
+            }
+        });
+
         //contact us API
 
 

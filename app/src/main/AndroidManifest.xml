@@ -16,8 +16,11 @@
 
         <activity android:name=".Info_page"
             android:label="The developer's team"/>
+
+        <activity android:name=".checkout"
+            android:label="Checkout"/>
         
-        <activity android:name=".Productdetails"></activity>
+        <activity android:name=".Productdetails"/>
 
         <activity android:name=".MainActivity"/>
         
