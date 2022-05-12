@@ -81,7 +81,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         //when click register
 
-        //clicks on insert
+        //clicks on signup
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,6 +92,8 @@ public class RegistrationActivity extends AppCompatActivity {
                 pass = cpass_input.getText().toString().trim();
 
                 myDB.registerUsrs(usrname, email, pass);
+                startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
+
             }
         });
 

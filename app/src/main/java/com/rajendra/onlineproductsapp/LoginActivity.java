@@ -91,11 +91,28 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         //clicks on create account
-        TextView btn=findViewById(R.id.CreateAccount);
-        btn.setOnClickListener(new View.OnClickListener() {
+        TextView btn1 = findViewById(R.id.CreateAccount);
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this,RegistrationActivity.class));
+            }
+        });
+
+
+        //clicks on about us
+        TextView btn2 = findViewById(R.id.aboutUs);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { setContentView(R.layout.about_us);
+            }
+        });
+
+        //clicks on breif descrip
+        TextView btn3 = findViewById(R.id.briefds);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { setContentView(R.layout.menu);
             }
         });
 

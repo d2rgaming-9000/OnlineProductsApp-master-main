@@ -192,16 +192,18 @@
 
     <Button
         android:id="@+id/infoBtn"
-        android:layout_width="84dp"
-        android:layout_height="39dp"
+        android:layout_width="108dp"
+        android:layout_height="40dp"
         android:backgroundTint="#B3D8E5"
-        android:text="About Us!"
+        android:text="Contact us!"
+        android:textAlignment="center"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.142" />
+        app:layout_constraintVertical_bias="0.057" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
