@@ -281,6 +281,20 @@ public class DBHelper extends SQLiteOpenHelper{
     }
     }
 
+    //Updates quantity of items when items are purchased
+    public void updatePurch(String specifier, int qty){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_QTY, qty);
+
+        long result = db.update(TABLE_NAME1, cv, "product_specifier=?", new String[]{specifier});
+        if(result == -1){
+            Toast.makeText(context, "Failed, items are either out of stock or product is reserved.", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, "Purchased Successfully!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     //update for user
     public boolean updateUsrData(String first_name, String email, String pass, String user_id){
