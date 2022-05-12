@@ -36,7 +36,7 @@ public class ItemView extends AppCompatActivity {
 
     DBHelper myDB;
 
-    ArrayList<String> product_id, product_type, product_specifier, product_ranges, prod_qty;
+    ArrayList<String> product_id, product_type, product_specifier, product_ranges, prod_qty, prod_img;
     CustomAdapter customAdapter;
 
     @Override
@@ -62,6 +62,7 @@ public class ItemView extends AppCompatActivity {
         product_specifier = new ArrayList<>();
         product_ranges = new ArrayList<>();
         prod_qty = new ArrayList<>();
+//        prod_img = new ArrayList<>();
 
 
         storeDataInArrays();
@@ -94,6 +95,7 @@ public class ItemView extends AppCompatActivity {
                 product_specifier.add(cursor.getString(2));
                 product_ranges.add(cursor.getString(3));
                 prod_qty.add(cursor.getString(4));
+               // prod_img.add(cursor.getString(5));
 
             }
             empty_imageview.setVisibility(View.GONE);

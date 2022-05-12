@@ -104,15 +104,32 @@ public class LoginActivity extends AppCompatActivity {
         TextView btn2 = findViewById(R.id.aboutUs);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { setContentView(R.layout.about_us);
+            public void onClick(View view) {
+                setContentView(R.layout.about_us);
+
+                Button btn4 = findViewById(R.id.back);
+                btn4.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(LoginActivity.this,LoginActivity.class));
+                    }
+                });
             }
         });
 
         //clicks on breif descrip
         TextView btn3 = findViewById(R.id.briefds);
-        btn2.setOnClickListener(new View.OnClickListener() {
+        btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { setContentView(R.layout.menu);
+
+                Button btn4 = findViewById(R.id.back2);
+                btn4.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(LoginActivity.this,LoginActivity.class));
+                    }
+                });
             }
         });
 

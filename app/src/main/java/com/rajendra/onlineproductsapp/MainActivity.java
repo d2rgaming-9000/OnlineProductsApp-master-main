@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
 
-    //The recycler controllers
+    //The recycler controllers..
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, Info_page.class);
                 startActivity(i);
+
             }
         });
 
@@ -97,19 +98,19 @@ public class MainActivity extends AppCompatActivity {
         productCategoryList.add(new ProductCategory(6, "Smart Watches"));
         productCategoryList.add(new ProductCategory(7, "Smart Phones"));
 
-        setProductRecycler(productCategoryList);
+  //      setProductRecycler(productCategoryList);
 // each recycler
         List<Products> productsList = new ArrayList<>();
         productsList.add(new Products(1, "Japanese LMTD EDITION Smart Watch", "35 GB", "$ 267.00", R.drawable.prod2));
         productsList.add(new Products(2, "New Special Edition Watch", "40 GB", "$ 250.00", R.drawable.prod1));
         productsList.add(new Products(3, "Fitness Watch", "8 GB", "$ 170.00", R.drawable.prod3));
         productsList.add(new Products(2, "New Special Edition Watch", "40 GB", "$ 250.00", R.drawable.prod1));
-        productsList.add(new Products(3, "Japanese LMTD EDITION Smart Watch", "35 GB", "$ 267.00", R.drawable.prod2));
-        productsList.add(new Products(2, "Fitness Watch", "8 GB", "$ 170.00", R.drawable.prod3));
+        productsList.add(new Products(1, "Japanese LMTD EDITION Smart Watch", "35 GB", "$ 267.00", R.drawable.prod2));
+        productsList.add(new Products(3, "Fitness Watch", "8 GB", "$ 170.00", R.drawable.prod3));
 
         setProdItemRecycler(productsList);
     }
-
+/*
     private void setProductRecycler(List<ProductCategory> productCategoryList) {
 
         productCatRecycler = findViewById(R.id.cat_recycler);
@@ -118,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         productCategoryAdapter = new ProductCategoryAdapter(this, productCategoryList);
         productCatRecycler.setAdapter(productCategoryAdapter);
     }
-
+*/
     private void setProdItemRecycler(List<Products> productsList) {
 
         prodItemRecycler = findViewById(R.id.product_recycler);
@@ -127,4 +128,5 @@ public class MainActivity extends AppCompatActivity {
         ProductAdapter productAdapter = new ProductAdapter(this, productsList);
         prodItemRecycler.setAdapter(productAdapter);
     }
+
 }

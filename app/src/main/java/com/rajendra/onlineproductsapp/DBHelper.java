@@ -34,6 +34,8 @@ public class DBHelper extends SQLiteOpenHelper{
     private static final String COLUMN_SPECIFIER = "product_specifier";
     private static final String COLUMN_RANGE = "product_range";
     private static final String COLUMN_QTY = "prod_qty";
+    private static final String COLUMN_IMG = "prod_img";
+
 
 
     //table for user details
@@ -67,7 +69,7 @@ public class DBHelper extends SQLiteOpenHelper{
                         " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COLUMN_TYPE + " TEXT, " +
                 COLUMN_SPECIFIER + " TEXT, "
-                + COLUMN_RANGE + " TEXT, " + COLUMN_QTY + " INTEGER);";
+                + COLUMN_RANGE + " TEXT, " + COLUMN_QTY + " INTEGER, " + COLUMN_IMG + " BLOB );";
         DB.execSQL(query);
 
         //for users and admins
@@ -98,7 +100,7 @@ public class DBHelper extends SQLiteOpenHelper{
     }
 
     //sol 3 continuance (items and products)
-    void addItems(String type, String specifier, String range, int qty){
+    void addItems(String type, String specifier, String range, int qty ){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 

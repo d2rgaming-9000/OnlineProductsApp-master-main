@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,7 +25,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     private Context context;
     private Activity activity;
-    private ArrayList product_id, product_type, product_specifier, product_range, prod_qty;
+    private ArrayList product_id, product_type, product_specifier, product_range, prod_qty, prod_img;
 
     public CustomAdapter(Activity activity, Context context, ArrayList product_id,
                          ArrayList product_type, ArrayList product_specifier,
@@ -36,6 +37,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         this.product_specifier = product_specifier;
         this.product_range = product_range;
         this.prod_qty = prod_qty;
+        //this.prod_img = prod_img;
     }
 
     @NonNull
@@ -55,6 +57,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.product_specifier_txt.setText(String.valueOf(product_specifier.get(position)));
         holder.product_range_txt.setText(String.valueOf(product_range.get(position)));
         holder.product_qty_txt.setText(String.valueOf(prod_qty.get(position)));
+        //holder.product_img_src.setImageResource((Integer) prod_img.get(position));
+
 
         //Recyclerview onClickListener
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +70,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 intent.putExtra("specifier", String.valueOf(product_specifier.get(position)));
                 intent.putExtra("range", String.valueOf(product_range.get(position)));
                 intent.putExtra("prod_qty", String.valueOf(prod_qty.get(position)));
+          //      intent.putExtra("prod_img", String.valueOf(prod_img.get(position)));
+
 
                 activity.startActivityForResult(intent, 1);
             }
@@ -81,6 +87,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
+        ImageView product_img_src;
         TextView product_id_txt, product_type_txt, product_specifier_txt, product_range_txt, product_qty_txt;
         LinearLayout mainLayout;
 
@@ -91,6 +98,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             product_specifier_txt = itemView.findViewById(R.id.product_specifier_txt);
             product_range_txt = itemView.findViewById(R.id.product_ranges_txt);
             product_qty_txt = itemView.findViewById(R.id.product_qty_txt);
+            //product_img_src = itemView.findViewById(R.id.product_img_src);
+
 
             mainLayout = itemView.findViewById(R.id.mainLayout);
             /* //Animate Recyclerview
