@@ -3,6 +3,7 @@ package com.rajendra.onlineproductsapp;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.Constraints;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -48,13 +49,13 @@ public class ItemView extends AppCompatActivity {
         add_button = findViewById(R.id.add_button);
         empty_imageview = findViewById(R.id.empty_imageview);
         no_data = findViewById(R.id.no_data);
+        
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ItemView.this, ItemsActivity.class);
-                startActivity(intent);
-            }
-        });
+                startActivity(intent); } });
+
 
         myDB = new DBHelper(ItemView.this);
         product_id = new ArrayList<>();
@@ -74,7 +75,20 @@ public class ItemView extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(ItemView.this));
 
     }
-
+/*
+    Constraints btn = findViewById(R.id.views);
+    btn.setOnClickListener(
+    {
+        Intent i = new Intent(ItemView.this, userView.class);
+        startActivity(i);
+    });
+    btn.OnClickListener(new View.OnClickListener() {
+        public void onClick() {
+            Intent i = new Intent(UsrData.this, userView.class);
+            startActivity(i);
+        }
+    });
+*/
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -83,6 +97,7 @@ public class ItemView extends AppCompatActivity {
         }
     }
 
+    //stores data in arrays
     void storeDataInArrays(){
         Cursor cursor = myDB.readAllData();
         if(cursor.getCount() == 0){
@@ -103,7 +118,7 @@ public class ItemView extends AppCompatActivity {
         }
     }
 
-   /* @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.my_menu, menu);
@@ -118,6 +133,7 @@ public class ItemView extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    // function not yet implemented
     void confirmDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Delete All?");
@@ -140,5 +156,5 @@ public class ItemView extends AppCompatActivity {
             }
         });
         builder.create().show();
-    }*/
+    }
 }

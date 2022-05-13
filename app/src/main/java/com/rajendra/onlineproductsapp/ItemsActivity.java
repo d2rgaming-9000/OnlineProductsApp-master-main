@@ -21,6 +21,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.Constraints;
 import androidx.core.app.ActivityCompat;
 
 import java.io.ByteArrayOutputStream;
@@ -91,6 +92,14 @@ public class ItemsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(ItemsActivity.this, ItemView.class);
                 startActivity(i);
+
+                ImageView btn = findViewById(R.id.product_img_src);
+
+                btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(ItemsActivity.this, MainActivity.class);
+                        startActivity(i); } });
             }
         });
 

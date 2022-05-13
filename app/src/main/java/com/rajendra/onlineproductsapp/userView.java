@@ -64,7 +64,6 @@ public class userView extends AppCompatActivity {
         usremail = new ArrayList<>();
         usrpass = new ArrayList<>();
 
-
         storeDataInArrays();
 
         userAdapter = new UserAdapter(userView.this,this,
@@ -72,7 +71,6 @@ public class userView extends AppCompatActivity {
                 usrf2, usremail, usrpass);
         recyclerView.setAdapter(userAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(userView.this));
-
     }
 
     @Override

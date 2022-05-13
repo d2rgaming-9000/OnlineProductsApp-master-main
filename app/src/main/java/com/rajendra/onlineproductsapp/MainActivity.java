@@ -56,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+	TextView nameTXT = findViewById(R.id.nameTextView);
+	
     //Button to redirect user to pages with button declaration
         //clicks on logout
         Button button1 = (Button)findViewById(R.id.MainBtn);
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
 
         //clicks on info page
         Button button2 = (Button)findViewById(R.id.infoBtn);

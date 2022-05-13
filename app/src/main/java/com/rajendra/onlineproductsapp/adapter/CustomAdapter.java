@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,6 +19,8 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rajendra.onlineproductsapp.ItemView;
+import com.rajendra.onlineproductsapp.MainActivity;
+import com.rajendra.onlineproductsapp.Productdetails;
 import com.rajendra.onlineproductsapp.R;
 
 import java.util.ArrayList;
@@ -61,10 +65,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
 
         //Recyclerview onClickListener
+
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ItemView.class);
+                Intent intent = new Intent(context, Productdetails.class);
                 intent.putExtra("id", String.valueOf(product_id.get(position)));
                 intent.putExtra("type", String.valueOf(product_type.get(position)));
                 intent.putExtra("specifier", String.valueOf(product_specifier.get(position)));
@@ -72,8 +77,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 intent.putExtra("prod_qty", String.valueOf(prod_qty.get(position)));
           //      intent.putExtra("prod_img", String.valueOf(prod_img.get(position)));
 
+                context.startActivity(intent);
 
-                activity.startActivityForResult(intent, 1);
+
+               // activity.startActivityForResult(intent, 1);
             }
         });
 
@@ -102,9 +109,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
 
             mainLayout = itemView.findViewById(R.id.mainLayout);
-            /* //Animate Recyclerview
+             //Animate Recyclerview
             Animation translate_anim = AnimationUtils.loadAnimation(context, R.anim.translate_anim);
-            mainLayout.setAnimation(translate_anim); */
+            mainLayout.setAnimation(translate_anim);
         }
 
     }
