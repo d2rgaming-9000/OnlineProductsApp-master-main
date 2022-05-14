@@ -44,20 +44,44 @@ public class MainActivity extends AppCompatActivity {
 
     ProductCategoryAdapter productCategoryAdapter;
     RecyclerView productCatRecycler, prodItemRecycler, recyclerView;
-
-
+    TextView username;
+    Button Cart;
+    Intent putToCart;
+    String itemcnt, name;
     private Button button;
 
 
     @Override
-
     //The recycler controllers..
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
-	TextView nameTXT = findViewById(R.id.nameTextView);
+        Intent intent1 = getIntent();
+        Intent intent2 = getIntent();
+
+        name = intent1.getStringExtra("name_key");
+        username = findViewById(R.id.username);
+
+        itemcnt = intent2.getStringExtra("items");
+        Cart = findViewById(R.id.CartBtn);
+
+        if (itemcnt == null)
+        {Cart.setText("Your cart is empty.");}
+        else if (itemcnt != null){
+            Cart.setText("You have " + itemcnt + " items.");
+        }
+        else
+        {
+            Cart.setText("View Cart");
+        }
+
+        //when user logs in show name of user in main menu
+
+            username.setText("Hello, "+name+" !");
+
+        TextView nameTXT = findViewById(R.id.nameTextView);
 	
     //Button to redirect user to pages with button declaration
         //clicks on logout
@@ -85,8 +109,9 @@ public class MainActivity extends AppCompatActivity {
         Button button3 = (Button)findViewById(R.id.CartBtn);
         button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, checkout.class);
-                startActivity(i);
+                putToCart = new Intent(MainActivity.this, checkout.class);
+                putToCart.putExtra("items", itemcnt);
+                startActivity(putToCart);
             }
         });
 

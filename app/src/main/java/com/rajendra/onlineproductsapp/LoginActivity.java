@@ -78,9 +78,12 @@ public class LoginActivity extends AppCompatActivity {
                         Boolean checkmail = db.checkuserMailPass(email, pass);
                         if(checkuser == true || checkmail == true){
                             Toast.makeText(LoginActivity.this, "Signed in successfully !", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                        finish();
-                        startActivity(i);}
+
+                            Intent openSetPin = new Intent(LoginActivity.this, MainActivity.class);
+                            openSetPin.putExtra("name_key", user);
+
+                            finish();
+                        startActivity(openSetPin);}
 
                         else if(checkuser == false){
                             Toast.makeText(LoginActivity.this, "The credentials are invalid. Please enter correct credentials.",

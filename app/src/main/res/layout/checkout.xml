@@ -156,19 +156,19 @@
             android:inputType="number"
             android:maxLength="6"/>
 
-        <EditText android:id="@+id/inputCardPin"
+        <EditText
+            android:id="@+id/inputCardPin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/inputCardExpiry"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginTop="05dp"
-            android:layout_marginBottom="05dp"
+            android:layout_marginEnd="10dp"
             android:hint="Enter Card pin(3 digits)"
             android:inputType="number"
-            android:maxLength="3"/>
+            android:maxLength="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputCardExpiry" />
 
         <TextView android:id="@+id/tvTotalItems"
             android:layout_width="wrap_content"
@@ -185,30 +185,34 @@
             android:id="@+id/cartItemsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
+            android:nestedScrollingEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTotalItems"
-            android:nestedScrollingEnabled="false"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalItems" />
 
-        <TextView android:id="@+id/tvSubtotal"
+        <TextView
+            android:id="@+id/tvSubtotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cartItemsRecyclerView"
             android:layout_margin="10dp"
             android:text="Sub total"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <TextView android:id="@+id/tvSubtotalAmount"
+        <TextView
+            android:id="@+id/tvSubtotalAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cartItemsRecyclerView"
             android:layout_margin="10dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="16dp"
             android:text="$0.0"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <TextView android:id="@+id/tvDeliveryCharge"
             android:layout_width="wrap_content"
@@ -265,6 +269,17 @@
             android:layout_margin="10dp"
             android:background="#006400"
             />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cartItemsRecyclerView" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

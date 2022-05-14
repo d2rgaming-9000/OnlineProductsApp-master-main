@@ -8,13 +8,13 @@
 
     <TextView
         android:id="@+id/textView24"
-        android:layout_width="415dp"
-        android:layout_height="479dp"
+        android:layout_width="407dp"
+        android:layout_height="610dp"
         android:background="@drawable/detail_page_bg"
         android:fontFamily="@font/rubik"
         android:inputType="textMultiLine"
         android:lineSpacingExtra="2dp"
-       android:text="
+        android:text="
         Welcome to Smart-Watch Authority application. Users will be able to purchase electronic smart watches for mobile devices and mobile supply chains with this application.
  Smart-Watch Authority is a cutting edge technology that reflects a creative approach to GUI design and manufacturing, as we dedicate ourselves to providing the best and most unique technology when purchasing merchandise.
 "
@@ -22,9 +22,11 @@
         android:textColor="@android:color/background_dark"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteX="-2dp" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
@@ -45,17 +47,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.112" />
+        app:layout_constraintVertical_bias="0.059" />
 
     <Button
         android:id="@+id/back2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="490dp"
         android:text="back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintVertical_bias="0.804" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
