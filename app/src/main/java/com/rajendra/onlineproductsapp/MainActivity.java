@@ -78,8 +78,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //when user logs in show name of user in main menu
-
+        if(name != null)
             username.setText("Hello, "+name+" !");
+        else
+            username.setText("Select more items or checkout.              ");
 
         TextView nameTXT = findViewById(R.id.nameTextView);
 	

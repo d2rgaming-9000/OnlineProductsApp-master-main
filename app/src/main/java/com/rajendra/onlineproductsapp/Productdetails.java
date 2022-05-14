@@ -65,8 +65,12 @@ public class Productdetails extends AppCompatActivity {
                 //to the cart, that will ONLY update the values in the DB
                 //when the user finalises purchase at the purchase page
             else
-                    openSetPin = new Intent(Productdetails.this, checkout.class);
-                    openSetPin.putExtra("items", count);
+                openSetPin = new Intent(Productdetails.this, checkout.class);
+                openSetPin = new Intent(Productdetails.this, MainActivity.class);
+
+                String countasstring = String.valueOf(count);
+                openSetPin.putExtra("items", countasstring);
+                startActivity(openSetPin);
             }
         });
     }
