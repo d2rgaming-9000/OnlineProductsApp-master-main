@@ -58,7 +58,8 @@
         android:shadowColor="#FFFFFF"
         android:text="Hello World!"
         android:textColor="@color/cardview_light_background"
-        android:textColorHint="#FFFFFF" />
+        android:textColorHint="#FFFFFF"
+        android:visibility="invisible" />
 
     <EditText
         android:id="@+id/editTextTextFileName"
@@ -74,7 +75,8 @@
         android:inputType="textPersonName"
         android:shadowColor="#040303"
         android:textColor="#FFFFFF"
-        android:textColorHint="@color/cardview_light_background" />
+        android:textColorHint="@color/cardview_light_background"
+        android:visibility="invisible" />
 
     <EditText
         android:id="@+id/qty_input"

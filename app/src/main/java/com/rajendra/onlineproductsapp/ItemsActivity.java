@@ -88,22 +88,31 @@ public class ItemsActivity extends AppCompatActivity {
         //clicks on View
         //to view all data of items
         Button btnView = (Button) findViewById(R.id.btnView);
-        btnView.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(ItemsActivity.this, ItemView.class);
-                startActivity(i);
 
-                ImageView btn = findViewById(R.id.product_img_src);
+        try {
+            btnView.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent i = new Intent(ItemsActivity.this, ItemView.class);
+                    startActivity(i);
 
-                btn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent i = new Intent(ItemsActivity.this, MainActivity.class);
-                        startActivity(i); } });
-            }
-        });
-
-	//(sol 4) Updating data
+                    try {
+                        ImageView btn = findViewById(R.id.product_img_src);
+                        btn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent i = new Intent(ItemsActivity.this, MainActivity.class);
+                                startActivity(i);
+                            }
+                        });
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //(sol 4) Updating data
             btnUpdate.setOnClickListener(new View.OnClickListener() {
                    @Override
                 public void onClick(View view) {

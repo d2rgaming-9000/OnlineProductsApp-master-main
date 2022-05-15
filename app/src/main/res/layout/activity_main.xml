@@ -51,7 +51,6 @@
         android:id="@+id/recyclerView"
         android:layout_width="426dp"
         android:layout_height="568dp"
-        android:background="@drawable/bg"
         android:paddingTop="?attr/actionBarSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -36,11 +36,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
                 android:text="Title 1"
                 android:textColor="#000"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/product_img_src"
                 app:layout_constraintStart_toEndOf="@+id/product_id_txt"
                 app:layout_constraintTop_toTopOf="@+id/product_id_txt" />
 
@@ -67,17 +67,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
                 android:layout_marginEnd="4dp"
-                android:text="Password"
+                android:text="quantity"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/product_img_src"
-                android:layout_width="163dp"
-                android:layout_height="174dp"
+                android:layout_width="105dp"
+                android:layout_height="93dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.88"
                 app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@drawable/prod" />
 
