@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,9 +16,9 @@ import java.util.Arrays;
 public class checkout extends AppCompatActivity{
 
 
-    Integer qty, Cart;
-    String specifier, count;
-    DBHelper myDB;
+    Integer qty, Cart = 0;
+    String specifier, count, stringCnt;
+    DBHelper myDB = new DBHelper(checkout.this);
     Button Quantity;
     RecyclerView ItemRecycler;
     TextView items, item_specifier, btnPurchase;
@@ -30,13 +31,19 @@ public class checkout extends AppCompatActivity{
 
             Intent intent = getIntent();
             count = intent.getStringExtra("items");
-            ItemRecycler = findViewById(R.id.cartItemsRecyclerView);
+            stringCnt = count;
+            try {
+                Cart = Cart + Integer.valueOf(stringCnt);
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
+
+        ItemRecycler = findViewById(R.id.cartItemsRecyclerView);
             items = findViewById(R.id.quantity);
-           // Cart = Integer.parseInt(Cart + count);
             //CartArry = new int[]{Cart};
 
             //sets number of items selected (quantity)
-            items.setText(count +" items in your cart.");
+            items.setText(Cart +" items in your cart.");
             //sets item specifiers
         item_specifier = findViewById(R.id.item_specifier_ui);
 
@@ -47,12 +54,20 @@ public class checkout extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 //updates remainder of qauntity in DB of item
-                DBHelper myDB = new DBHelper(checkout.this);
                 try {
                     specifier = "JPN#34536";
-                    qty = 1;
+                    qty = qty;
+                    qty = qty - Cart;
+                    Boolean checkPurch = myDB.updatePurch(specifier, qty);
 
-                    myDB.updatePurch(specifier, qty);
+                    if(checkPurch == true)
+                    {
+                        Toast.makeText(checkout.this, "Successfully purchased!", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (checkPurch == false)
+                    {
+                        Toast.makeText(checkout.this, "Failed to purchase",Toast.LENGTH_SHORT).show();
+                    }
                 } catch (NullPointerException e) {
                     e.printStackTrace();
                 }

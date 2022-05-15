@@ -72,6 +72,16 @@ public class DBHelper extends SQLiteOpenHelper{
                 + COLUMN_RANGE + " TEXT, " + COLUMN_QTY + " INTEGER, " + COLUMN_IMG + " BLOB );";
         DB.execSQL(query);
 
+        //Insert default DATA to items and products
+        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty) VALUES (1, 'Apple Watch', 'APPL#2193', '$399', 6)");
+        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty) VALUES (2, 'Samsung Watch', 'SMG#2293', '$799', 2)");
+        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty) VALUES (3, 'Hauwei Watch', 'HWUI#2393', '$699', 4)");
+        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty) VALUES (4, 'Samsung Watch', 'SMG#2493', '$499', 5)");
+        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty) VALUES (5, 'JPN-LMTD Watch', 'JPN#2593', '$299', 1)");
+        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty) VALUES (6, 'Hauwei Pro', 'HWUI#2690', '$699', 4)");
+        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty) VALUES (7, 'Galaxy Watch Pro', 'GLX#2793', '$699', 3)");
+
+
         //for users and admins
         String usrquery =
                 "CREATE TABLE " +  TABLE_NAME2 +
@@ -80,6 +90,11 @@ public class DBHelper extends SQLiteOpenHelper{
                         COLUMN_F2 + " TEXT, "
                         + COLUMN_EMAIL + " TEXT, " + COLUMN_PASS + " TEXT, " + COLUMN_ADMIN + " TEXT);";
         DB.execSQL(usrquery);
+        //isnert users and admin
+        DB.execSQL("INSERT INTO " + TABLE_NAME2 + "(user_id, first_name, last_name, email, pass, admin) VALUES (1, 'James', 'Conney', 'JamesConney@admin', 123, 'ADMIN')");
+        DB.execSQL("INSERT INTO " + TABLE_NAME2 + "(user_id, first_name, last_name, email, pass) VALUES (41739, 'Salah', 'Saleh', '41739@aum.com', 000)");
+        DB.execSQL("INSERT INTO " + TABLE_NAME2 + "(user_id, first_name, last_name, email, pass) VALUES (2000, '12', '12', 'Tester', 12)");
+
     }
 
     @Override
@@ -94,10 +109,12 @@ public class DBHelper extends SQLiteOpenHelper{
         DB.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME1);
         onCreate(DB);
 
-
         DB.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME2);
         onCreate(DB);
     }
+
+
+
 
     //sol 3 continuance (items and products)
     void addItems(String type, String specifier, String range, int qty ){
@@ -284,7 +301,7 @@ public class DBHelper extends SQLiteOpenHelper{
     }
 
     //Updates quantity of items when items are purchased
-    public void updatePurch(String specifier, int qty){
+    public Boolean updatePurch(String specifier, int qty){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_QTY, qty);
@@ -295,6 +312,7 @@ public class DBHelper extends SQLiteOpenHelper{
         }else {
             Toast.makeText(context, "Purchased Successfully!", Toast.LENGTH_SHORT).show();
         }
+        return true;
     }
 
 
