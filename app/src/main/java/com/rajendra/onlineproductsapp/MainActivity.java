@@ -146,15 +146,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //clicks on view cart
-        Button button3 = (Button) findViewById(R.id.CartBtn);
-        button3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                putToCart = new Intent(MainActivity.this, checkout.class);
-                putToCart.putExtra("items", itemcnt);
-                startActivity(putToCart);
-            }
-        });
-
+        try {
+            Button button3 = (Button) findViewById(R.id.CartBtn);
+            button3.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    putToCart = new Intent(MainActivity.this, checkout.class);
+                    putToCart.putExtra("items", itemcnt);
+                    startActivity(putToCart);
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         //contact us API
 
 

@@ -33,13 +33,9 @@ public class ItemsActivity extends AppCompatActivity {
 
     private TextView textViewStatus;
     private EditText editTextFileName;
-    String id;
-    String type;
-    String specifier;
-    String ranges;
-    ImageView img;
+    String id, type, specifier, ranges;
     Integer qty;
-    ImageView prod_img;
+    ImageView img, prod_img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -199,7 +199,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/quantity" />
 
         <TextView
             android:id="@+id/tvSubtotalAmount"
@@ -212,7 +212,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/quantity" />
 
         <TextView android:id="@+id/tvDeliveryCharge"
             android:layout_width="wrap_content"
@@ -254,7 +254,7 @@
             android:textSize="18sp"
             android:textStyle="bold"/>
 
-        <TextView android:id="@+id/buttonPlaceYourOrder"
+        <TextView android:id="@+id/placeYourOrder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -271,13 +271,25 @@
             />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="TextView"
+            android:text="quantity selected"
             android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cartItemsRecyclerView" />
+
+        <TextView
+            android:id="@+id/item_specifier_ui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="292dp"
+            android:layout_marginTop="8dp"
+            android:text="JPN#34536"
+            android:textSize="20sp"
+            android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cartItemsRecyclerView" />
 
