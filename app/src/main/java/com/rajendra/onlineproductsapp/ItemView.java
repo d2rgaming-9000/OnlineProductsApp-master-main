@@ -63,14 +63,14 @@ public class ItemView extends AppCompatActivity {
         product_specifier = new ArrayList<>();
         product_ranges = new ArrayList<>();
         prod_qty = new ArrayList<>();
-//        prod_img = new ArrayList<>();
+        prod_img = new ArrayList<>();
 
 
         storeDataInArrays();
 
         customAdapter = new CustomAdapter(ItemView.this,this,
                 product_id, product_type,
-                product_specifier, product_ranges, prod_qty);
+                product_specifier, product_ranges, prod_qty, prod_img);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(ItemView.this));
 
@@ -110,7 +110,7 @@ public class ItemView extends AppCompatActivity {
                 product_specifier.add(cursor.getString(2));
                 product_ranges.add(cursor.getString(3));
                 prod_qty.add(cursor.getString(4));
-               // prod_img.add(cursor.getString(5));
+                prod_img.add(cursor.getString(5));
 
             }
             empty_imageview.setVisibility(View.GONE);

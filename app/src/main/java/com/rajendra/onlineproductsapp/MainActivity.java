@@ -1,28 +1,19 @@
 package com.rajendra.onlineproductsapp;
 
-import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import java.util.Calendar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -30,20 +21,7 @@ import com.rajendra.onlineproductsapp.adapter.CustomAdapter;
 import com.rajendra.onlineproductsapp.adapter.ProductAdapter;
 import com.rajendra.onlineproductsapp.adapter.ProductCategoryAdapter;
 import com.rajendra.onlineproductsapp.model.ProductCategory;
-import com.rajendra.onlineproductsapp.model.Products;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -96,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         customAdapter = new CustomAdapter(MainActivity.this, this,
                 product_id, product_type,
-                product_specifier, product_ranges, prod_qty);
+                product_specifier, product_ranges, prod_qty, prod_img);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 

@@ -73,13 +73,13 @@ public class DBHelper extends SQLiteOpenHelper{
         DB.execSQL(query);
 
         //Insert default DATA to items and products
-        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty) VALUES (1, 'Apple Watch', 'APPL#2193', '$399', 6)");
-        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty) VALUES (2, 'Samsung Watch', 'SMG#2293', '$799', 2)");
-        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty) VALUES (3, 'Hauwei Watch', 'HWUI#2393', '$699', 4)");
-        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty) VALUES (4, 'Samsung Watch', 'SMG#2493', '$499', 5)");
-        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty) VALUES (5, 'JPN-LMTD Watch', 'JPN#2593', '$299', 1)");
-        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty) VALUES (6, 'Hauwei Pro', 'HWUI#2690', '$699', 4)");
-        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty) VALUES (7, 'Galaxy Watch Pro', 'GLX#2793', '$699', 3)");
+        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty) VALUES (5, 'JPN-LMTD Watch', 'JPN#2593', '$299', 1, R.Drawable.prod)");
+        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty, prod_img) VALUES (2, 'Samsung Watch', 'SMG#2293', '$799', 2,R.Drawbale.prod1)");
+        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty) VALUES (3, 'Hauwei Watch', 'HWUI#2393', '$699', 4, R.Drawable.prod2)");
+        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty) VALUES (4, 'iPhone 14', 'APPL#3093', '$499', 5, R.Drawable.prod3)");
+        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty, prod_img) VALUES (1, 'Apple Watch', 'APPL#2193', '$399', 6, R.Drawable.prod4)");
+        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty) VALUES (6, 'Hauwei Pro', 'HWUI#2690', '$699', 4, R.Drawable.prod5)");
+        DB.execSQL("INSERT INTO " + TABLE_NAME1 + "(product_id, product_type, product_specifier, product_range, prod_qty) VALUES (7, 'Galaxy Watch Pro', 'GLX#2793', '$699', 3, R.Drawable.prod6)");
 
 
         //for users and admins
